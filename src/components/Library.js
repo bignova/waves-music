@@ -3,6 +3,7 @@ import LibrarySong from "./LibrarySong";
 
 const Library = ({
   songs,
+  currentSong,
   setCurrentSong,
   audioRef,
   isPlaying,
@@ -16,6 +17,7 @@ const Library = ({
         {songs.map((song) => (
           <LibrarySong
             songs={songs}
+            currentSong={currentSong}
             setCurrentSong={setCurrentSong}
             song={song}
             id={song.id}
