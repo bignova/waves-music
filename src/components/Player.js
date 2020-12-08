@@ -56,17 +56,30 @@ const Player = ({
     playAudio(isPlaying, audioRef);
   };
 
+  // Add the styles
+  const animationPercentage = (songInfo.currentTime / songInfo.duration) * 100;
+  const trackAnim = {
+    transform: `translateX(${animationPercentage}%)`,
+  };
+
+  const trackBackground = {
+    background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`,
+  };
+
   return (
     <div className="player">
       <div className="time-control">
         <p>{getTime(songInfo.currentTime)}</p>
-        <input
-          min={0}
-          max={songInfo.duration || 0}
-          value={songInfo.currentTime}
-          onChange={dragHandler}
-          type="range"
-        />
+        <div style={trackBackground} className="track">
+          <input
+            min={0}
+            max={songInfo.duration || 0}
+            value={songInfo.currentTime}
+            onChange={dragHandler}
+            type="range"
+          />
+          <div style={trackAnim} className="animate-track"></div>
+        </div>
         <p>{getTime(songInfo.duration || 0)}</p>
       </div>
       <div className="play-control">
