@@ -7,7 +7,6 @@ const Library = ({
   setCurrentSong,
   audioRef,
   isPlaying,
-  setSongs,
   libraryStatus,
 }) => {
   return (
@@ -16,15 +15,11 @@ const Library = ({
       <div className="library-songs">
         {songs.map((song) => (
           <LibrarySong
-            songs={songs}
+            song={song}
             currentSong={currentSong}
             setCurrentSong={setCurrentSong}
-            song={song}
-            id={song.id}
-            key={song.id}
             audioRef={audioRef}
             isPlaying={isPlaying}
-            setSongs={setSongs}
           />
         ))}
       </div>
